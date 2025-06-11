@@ -44,9 +44,9 @@ namespace Prueba_WebView
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
-
+            await webView21.EnsureCoreWebView2Async();
         }
 
         private void titleBar_MouseDown(object sender, MouseEventArgs e)
@@ -124,24 +124,49 @@ namespace Prueba_WebView
             base.WndProc(ref m);
         }
 
-        private void bBuscar_Click(object sender, EventArgs e)
+        private async void bBuscar_Click(object sender, EventArgs e)
         {
-            if (webView21 != null && webView21.CoreWebView2 != null)
-            {
-                webView21.CoreWebView2.Navigate(tBuscar.Text);
-            }
+            string texto = tBuscar.Text.Replace("'", "\\'"); // Escapar comillas simples
+
+            // Script para insertar el texto en el campo de búsqueda
+            string insertarScript = $@"
+        (function() {{
+            const insertText = () => {{
+                const input = document.getElementsByName('q')[0];
+                if (input) {{
+                    input.value = '{texto}';
+                    return true;
+                }}
+                return false;
+            }};
+
+            if (!insertText()) {{
+                const observer = new MutationObserver(() => {{
+                    if (insertText()) {{
+                        observer.disconnect();
+                    }}
+                }});
+                observer.observe(document.body, {{
+                    childList: true,
+                    subtree: true
+                }});
+            }}
+        }})();
+    ";
+
+            await webView21.ExecuteScriptAsync(insertarScript);
+
+            // Esperar 1 segundo
+            await Task.Delay(1000);
+
+            // Script para enviar el formulario
+            string enviarScript = @"
+        let input = document.getElementsByName('q')[0];
+        if (input && input.form) {
+            input.form.submit();
         }
-
-        private void webView21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           
-            Form2 form2 = new Form2();
-
+    ";
+            await webView21.ExecuteScriptAsync(enviarScript);
         }
     }
 }
