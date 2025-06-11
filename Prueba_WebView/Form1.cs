@@ -14,7 +14,7 @@ using Microsoft.Web.WebView2.Core;
 
 namespace Prueba_WebView
 {
-    // Si eres iván deberías ver esto (ACTUALIZADO)
+    // Ahora esto cambia así.
     public partial class Form1 : Form
     {
         private Image original;
