@@ -126,7 +126,7 @@ namespace Prueba_WebView
 
         private async void bBuscar_Click(object sender, EventArgs e)
         {
-            string texto = tBuscar.Text.Replace("'", "\\'"); // Escapar comillas simples
+            string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
 
             // Script para insertar el texto en el campo de búsqueda
             string insertarScript = $@"
