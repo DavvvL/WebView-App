@@ -136,5 +136,12 @@ namespace Prueba_WebView
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+            Form2 form2 = new Form2();
+
+        }
     }
 }
