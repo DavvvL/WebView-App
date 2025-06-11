@@ -148,6 +148,7 @@
             this.Controls.Add(this.titleBar);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(850, 500);
             this.Name = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.titleBar.ResumeLayout(false);
