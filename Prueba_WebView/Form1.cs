@@ -49,8 +49,6 @@ namespace Prueba_WebView
 
         }
 
-
-
         private void titleBar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -139,11 +137,8 @@ namespace Prueba_WebView
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void tBuscar_TextChanged(object sender, EventArgs e)
         {
-           
-            Form2 form2 = new Form2();
-            form2.ShowDialog(this);
 
         }
     }
