@@ -15,6 +15,8 @@ using Microsoft.Web.WebView2.Core;
 namespace Prueba_WebView
 {
     // Ahora esto cambia así.
+    // Comentario de prueba
+
     public partial class Form1 : Form
     {
         private Image original;
