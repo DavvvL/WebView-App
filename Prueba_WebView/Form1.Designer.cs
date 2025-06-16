@@ -34,6 +34,7 @@
             this.bCerrar = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.bLeer = new System.Windows.Forms.Button();
+            this.bBuscar2 = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -41,7 +42,7 @@
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.titleBar.Controls.Add(this.bLeer);
+            this.titleBar.Controls.Add(this.bBuscar2);
             this.titleBar.Controls.Add(this.bBuscar);
             this.titleBar.Controls.Add(this.tBuscar);
             this.titleBar.Controls.Add(this.bCerrar);
@@ -62,7 +63,7 @@
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(72, 24);
             this.bBuscar.TabIndex = 2;
-            this.bBuscar.Text = "Insertar";
+            this.bBuscar.Text = "Nombre";
             this.bBuscar.UseVisualStyleBackColor = false;
             this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
@@ -117,13 +118,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bLeer.BackColor = System.Drawing.Color.White;
             this.bLeer.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bLeer.Location = new System.Drawing.Point(884, 12);
+            this.bLeer.Location = new System.Drawing.Point(973, 66);
             this.bLeer.Name = "bLeer";
-            this.bLeer.Size = new System.Drawing.Size(72, 24);
+            this.bLeer.Size = new System.Drawing.Size(106, 76);
             this.bLeer.TabIndex = 3;
             this.bLeer.Text = "Leer";
             this.bLeer.UseVisualStyleBackColor = false;
             this.bLeer.Click += new System.EventHandler(this.bLeer_Click);
+            // 
+            // bBuscar2
+            // 
+            this.bBuscar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bBuscar2.BackColor = System.Drawing.Color.White;
+            this.bBuscar2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bBuscar2.Location = new System.Drawing.Point(884, 12);
+            this.bBuscar2.Name = "bBuscar2";
+            this.bBuscar2.Size = new System.Drawing.Size(72, 24);
+            this.bBuscar2.TabIndex = 3;
+            this.bBuscar2.Text = "Apellido";
+            this.bBuscar2.UseVisualStyleBackColor = false;
+            this.bBuscar2.Click += new System.EventHandler(this.bBuscar2_Click);
             // 
             // Form1
             // 
@@ -132,6 +147,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1094, 642);
             this.ControlBox = false;
+            this.Controls.Add(this.bLeer);
             this.Controls.Add(this.webView21);
             this.Controls.Add(this.titleBar);
             this.DoubleBuffered = true;
@@ -154,6 +170,7 @@
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.TextBox tBuscar;
         private System.Windows.Forms.Button bLeer;
+        private System.Windows.Forms.Button bBuscar2;
     }
 }
 
