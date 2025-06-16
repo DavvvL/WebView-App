@@ -130,29 +130,13 @@ namespace Prueba_WebView
 
             // Script para insertar el texto en el campo de búsqueda
             string insertarScript = $@"
-        (function() {{
-            const insertText = () => {{
+            (function() {{
                 const input = document.getElementsByName('q')[0];
                 if (input) {{
                     input.value = '{texto}';
-                    return true;
                 }}
-                return false;
-            }};
-
-            if (!insertText()) {{
-                const observer = new MutationObserver(() => {{
-                    if (insertText()) {{
-                        observer.disconnect();
-                    }}
-                }});
-                observer.observe(document.body, {{
-                    childList: true,
-                    subtree: true
-                }});
-            }}
-        }})();
-    ";
+            }})();
+            ";
 
             await webView21.ExecuteScriptAsync(insertarScript);
 
