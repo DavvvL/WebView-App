@@ -131,7 +131,8 @@ namespace Prueba_WebView
             // Script para insertar el texto en el campo de búsqueda
             string insertarScript = $@"
             (function() {{
-                const input = document.getElementsByName('q')[0];
+                const iframe = document.getElementById(""iframeResult"");
+                const input = iframe.contentDocument.getElementsByName(""fname"")[0];
                 if (input) {{
                     input.value = '{texto}';
                 }}
@@ -139,18 +140,23 @@ namespace Prueba_WebView
             ";
 
             await webView21.ExecuteScriptAsync(insertarScript);
-
-            // Esperar 1 segundo
-            await Task.Delay(1000);
-
-            // Script para enviar el formulario
-            string enviarScript = @"
-        let input = document.getElementsByName('q')[0];
-        if (input && input.form) {
-            input.form.submit();
         }
-    ";
-            await webView21.ExecuteScriptAsync(enviarScript);
+
+        private async void bLeer_Click(object sender, EventArgs e)
+        {
+            string leerScript = @"
+                (function() {
+                    const iframe = document.getElementById('iframeResult');
+                    const input = iframe.contentDocument.getElementsByName('fname')[0];
+                    if (input.value != '') {
+                        alert('Valor del input: ' + input.value);
+                    } else {
+                        alert('Sin input');
+                    }
+                })();
+            ";
+
+            string resultado = await webView21.ExecuteScriptAsync(leerScript);
         }
     }
 }

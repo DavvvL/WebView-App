@@ -33,6 +33,7 @@
             this.tBuscar = new System.Windows.Forms.TextBox();
             this.bCerrar = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.bLeer = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleBar.Controls.Add(this.bLeer);
             this.titleBar.Controls.Add(this.bBuscar);
             this.titleBar.Controls.Add(this.tBuscar);
             this.titleBar.Controls.Add(this.bCerrar);
@@ -56,11 +58,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bBuscar.BackColor = System.Drawing.Color.White;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar.Location = new System.Drawing.Point(884, 12);
+            this.bBuscar.Location = new System.Drawing.Point(806, 12);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(72, 24);
             this.bBuscar.TabIndex = 2;
-            this.bBuscar.Text = "Buscar";
+            this.bBuscar.Text = "Insertar";
             this.bBuscar.UseVisualStyleBackColor = false;
             this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
@@ -73,7 +75,7 @@
             this.tBuscar.Location = new System.Drawing.Point(28, 12);
             this.tBuscar.Multiline = true;
             this.tBuscar.Name = "tBuscar";
-            this.tBuscar.Size = new System.Drawing.Size(832, 24);
+            this.tBuscar.Size = new System.Drawing.Size(772, 24);
             this.tBuscar.TabIndex = 1;
             this.tBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tBuscar.WordWrap = false;
@@ -105,9 +107,23 @@
             this.webView21.Location = new System.Drawing.Point(28, 66);
             this.webView21.Name = "webView21";
             this.webView21.Size = new System.Drawing.Size(928, 551);
-            this.webView21.Source = new System.Uri("https://www.google.com/", System.UriKind.Absolute);
+            this.webView21.Source = new System.Uri("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_test", System.UriKind.Absolute);
             this.webView21.TabIndex = 1;
             this.webView21.ZoomFactor = 1D;
+            // 
+            // bLeer
+            // 
+            this.bLeer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bLeer.BackColor = System.Drawing.Color.White;
+            this.bLeer.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bLeer.Location = new System.Drawing.Point(884, 12);
+            this.bLeer.Name = "bLeer";
+            this.bLeer.Size = new System.Drawing.Size(72, 24);
+            this.bLeer.TabIndex = 3;
+            this.bLeer.Text = "Leer";
+            this.bLeer.UseVisualStyleBackColor = false;
+            this.bLeer.Click += new System.EventHandler(this.bLeer_Click);
             // 
             // Form1
             // 
@@ -137,6 +153,7 @@
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.TextBox tBuscar;
+        private System.Windows.Forms.Button bLeer;
     }
 }
 
