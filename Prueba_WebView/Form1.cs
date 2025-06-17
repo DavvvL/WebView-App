@@ -126,15 +126,15 @@ namespace Prueba_WebView
 
         private async void bBuscar_Click(object sender, EventArgs e)
         {
-            string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
+            string fecha = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
 
             // Script para insertar el texto en el campo de búsqueda
             string insertarScript = $@"
             (function() {{
                 const iframe = document.getElementById(""iframeResult"");
-                const input = iframe.contentDocument.getElementsByName(""fname"")[0];
+                const input = iframe.contentDocument.getElementsByName(""birthday"")[0];
                 if (input) {{
-                    input.value = '{texto}';
+                    input.value = '{fecha}';
                 }}
             }})();
             ";
@@ -147,10 +147,9 @@ namespace Prueba_WebView
             string leerScript = @"
                 (function() {
                     const iframe = document.getElementById('iframeResult');
-                    const input1 = iframe.contentDocument.getElementsByName('fname')[0];
-                    const input2 = iframe.contentDocument.getElementsByName('lname')[0];
-                    if (input1.value != '' && input2.value != '') {
-                        alert('Nombre: ' + input1.value + '\nApellido: ' + input2.value);
+                    const input1 = iframe.contentDocument.getElementsByName('birthday')[0];
+                    if (input1.value != '') {
+                        alert('Fecha: ' + input1.value);
                     } else {
                         alert('Por favor llene el formulario');
                     }
@@ -158,24 +157,6 @@ namespace Prueba_WebView
             ";
 
             string resultado = await webView21.ExecuteScriptAsync(leerScript);
-        }
-
-        private async void bBuscar2_Click(object sender, EventArgs e)
-        {
-            string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
-
-            // Script para insertar el texto en el campo de búsqueda
-            string insertarScript2 = $@"
-            (function() {{
-                const iframe = document.getElementById(""iframeResult"");
-                const input = iframe.contentDocument.getElementsByName(""lname"")[0];
-                if (input) {{
-                    input.value = '{texto}';
-                }}
-            }})();
-            ";
-
-            await webView21.ExecuteScriptAsync(insertarScript2);
         }
     }
 }
