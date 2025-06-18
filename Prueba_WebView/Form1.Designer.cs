@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.titleBar = new System.Windows.Forms.Panel();
+            this.bBuscar2 = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
             this.tBuscar = new System.Windows.Forms.TextBox();
             this.bCerrar = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.bLeer = new System.Windows.Forms.Button();
-            this.bBuscar2 = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +52,20 @@
             this.titleBar.Size = new System.Drawing.Size(1094, 49);
             this.titleBar.TabIndex = 0;
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
+            // 
+            // bBuscar2
+            // 
+            this.bBuscar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bBuscar2.BackColor = System.Drawing.Color.White;
+            this.bBuscar2.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bBuscar2.Location = new System.Drawing.Point(884, 12);
+            this.bBuscar2.Name = "bBuscar2";
+            this.bBuscar2.Size = new System.Drawing.Size(72, 24);
+            this.bBuscar2.TabIndex = 3;
+            this.bBuscar2.Text = "Apellido";
+            this.bBuscar2.UseVisualStyleBackColor = false;
+            this.bBuscar2.Click += new System.EventHandler(this.bBuscar2_Click);
             // 
             // bBuscar
             // 
@@ -126,25 +140,11 @@
             this.bLeer.UseVisualStyleBackColor = false;
             this.bLeer.Click += new System.EventHandler(this.bLeer_Click);
             // 
-            // bBuscar2
-            // 
-            this.bBuscar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBuscar2.BackColor = System.Drawing.Color.White;
-            this.bBuscar2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar2.Location = new System.Drawing.Point(884, 12);
-            this.bBuscar2.Name = "bBuscar2";
-            this.bBuscar2.Size = new System.Drawing.Size(72, 24);
-            this.bBuscar2.TabIndex = 3;
-            this.bBuscar2.Text = "Apellido";
-            this.bBuscar2.UseVisualStyleBackColor = false;
-            this.bBuscar2.Click += new System.EventHandler(this.bBuscar2_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1094, 642);
             this.ControlBox = false;
             this.Controls.Add(this.bLeer);
