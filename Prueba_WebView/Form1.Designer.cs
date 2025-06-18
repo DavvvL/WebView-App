@@ -57,10 +57,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bBuscar.BackColor = System.Drawing.Color.White;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(884, 12);
+            this.bBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(864, 12);
             this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(72, 24);
+            this.bBuscar.Size = new System.Drawing.Size(92, 24);
             this.bBuscar.TabIndex = 2;
             this.bBuscar.Text = "Insertar";
             this.bBuscar.UseVisualStyleBackColor = false;
@@ -75,7 +75,7 @@
             this.tBuscar.Location = new System.Drawing.Point(28, 12);
             this.tBuscar.Multiline = true;
             this.tBuscar.Name = "tBuscar";
-            this.tBuscar.Size = new System.Drawing.Size(850, 24);
+            this.tBuscar.Size = new System.Drawing.Size(830, 24);
             this.tBuscar.TabIndex = 1;
             this.tBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tBuscar.WordWrap = false;
