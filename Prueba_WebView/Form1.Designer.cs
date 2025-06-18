@@ -57,6 +57,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bBuscar.BackColor = System.Drawing.Color.White;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bBuscar.Font = new System.Drawing.Font("Microsoft Tai Le", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.Location = new System.Drawing.Point(884, 12);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(72, 24);
@@ -116,6 +117,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bLeer.BackColor = System.Drawing.Color.White;
             this.bLeer.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bLeer.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bLeer.Location = new System.Drawing.Point(973, 66);
             this.bLeer.Name = "bLeer";
             this.bLeer.Size = new System.Drawing.Size(106, 76);
