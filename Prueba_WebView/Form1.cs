@@ -149,7 +149,7 @@ namespace Prueba_WebView
                     const iframe = document.getElementById('iframeResult');
                     const input1 = iframe.contentDocument.getElementsByName('quantity')[0];
                     if (input1.value != '') {
-                        alert('Numero flotante' + input1.value + ' subido');
+                        alert('Numero flotante : ' + input1.value);
                     } else {
                         alert('Por favor llene el formulario');
                     }
