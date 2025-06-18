@@ -167,7 +167,7 @@ namespace Prueba_WebView
             string insertarScript2 = $@"
             (function() {{
                 const iframe = document.getElementById(""iframeResult"");
-                const input = iframe.contentDocument.getElementsByName(""lname"")[0];
+                const input = iframe.contentDocument.getElementsByName(""lname"")[0]; 
                 if (input) {{
                     input.value = '{texto}';
                 }}
