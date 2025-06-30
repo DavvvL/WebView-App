@@ -177,5 +177,14 @@ namespace Prueba_WebView
 
             await webView21.ExecuteScriptAsync(insertarScript2);
         }
+
+        private async void webView21_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        {
+            if (webView21.Source.ToString().TrimEnd('/') == "https://portal.facturaelectronica.sat.gob.mx/TerminosCondiciones")
+            {
+                await Task.Delay(100); // espera 10 segundos
+                webView21.CoreWebView2.Navigate("https://portalcfdi.facturaelectronica.sat.gob.mx/ConsultaReceptor.aspx");
+            }
+        }
     }
 }

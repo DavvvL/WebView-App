@@ -122,9 +122,10 @@
             this.webView21.Location = new System.Drawing.Point(28, 66);
             this.webView21.Name = "webView21";
             this.webView21.Size = new System.Drawing.Size(928, 551);
-            this.webView21.Source = new System.Uri("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_input_test", System.UriKind.Absolute);
+            this.webView21.Source = new System.Uri("https://portal.facturaelectronica.sat.gob.mx/", System.UriKind.Absolute);
             this.webView21.TabIndex = 1;
             this.webView21.ZoomFactor = 1D;
+            this.webView21.NavigationCompleted += new System.EventHandler<Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs>(this.webView21_NavigationCompleted);
             // 
             // bLeer
             // 
