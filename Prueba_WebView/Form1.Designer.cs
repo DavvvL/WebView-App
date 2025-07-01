@@ -36,6 +36,12 @@
             this.bCerrar = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.bLeer = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnInsertar = new System.Windows.Forms.Button();
+            this.comboPerfiles = new System.Windows.Forms.ComboBox();
+            this.txtRFC = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -139,7 +145,7 @@
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView21.Location = new System.Drawing.Point(28, 86);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(1128, 631);
+            this.webView21.Size = new System.Drawing.Size(1059, 631);
             this.webView21.Source = new System.Uri("https://portal.facturaelectronica.sat.gob.mx/", System.UriKind.Absolute);
             this.webView21.TabIndex = 1;
             this.webView21.ZoomFactor = 1D;
@@ -154,11 +160,83 @@
             this.bLeer.Font = new System.Drawing.Font("JetBrainsMono NFM", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bLeer.Location = new System.Drawing.Point(1174, 85);
             this.bLeer.Name = "bLeer";
-            this.bLeer.Size = new System.Drawing.Size(106, 176);
+            this.bLeer.Size = new System.Drawing.Size(0, 0);
             this.bLeer.TabIndex = 3;
             this.bLeer.Text = "Leer";
             this.bLeer.UseVisualStyleBackColor = false;
             this.bLeer.Click += new System.EventHandler(this.bLeer_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("JetBrainsMonoNL NF SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1112, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 22);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Auto-Insert RFC";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btnInsertar
+            // 
+            this.btnInsertar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInsertar.Image = global::Prueba_WebView.Properties.Resources.enter2;
+            this.btnInsertar.Location = new System.Drawing.Point(1116, 127);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(75, 43);
+            this.btnInsertar.TabIndex = 6;
+            this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
+            // 
+            // comboPerfiles
+            // 
+            this.comboPerfiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboPerfiles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboPerfiles.Font = new System.Drawing.Font("JetBrainsMonoNL NF", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboPerfiles.FormattingEnabled = true;
+            this.comboPerfiles.Location = new System.Drawing.Point(1116, 265);
+            this.comboPerfiles.Name = "comboPerfiles";
+            this.comboPerfiles.Size = new System.Drawing.Size(156, 26);
+            this.comboPerfiles.TabIndex = 7;
+            this.comboPerfiles.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboPerfiles_DrawItem);
+            this.comboPerfiles.SelectedIndexChanged += new System.EventHandler(this.comboPerfiles_SelectedIndexChanged);
+            // 
+            // txtRFC
+            // 
+            this.txtRFC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRFC.Font = new System.Drawing.Font("JetBrainsMono NFM", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRFC.Location = new System.Drawing.Point(1116, 185);
+            this.txtRFC.Name = "txtRFC";
+            this.txtRFC.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtRFC.Size = new System.Drawing.Size(156, 25);
+            this.txtRFC.TabIndex = 8;
+            this.txtRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPassword.Font = new System.Drawing.Font("JetBrainsMono NFM", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(1116, 225);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtPassword.Size = new System.Drawing.Size(156, 25);
+            this.txtPassword.TabIndex = 9;
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Image = global::Prueba_WebView.Properties.Resources.guardar;
+            this.btnGuardar.Location = new System.Drawing.Point(1197, 127);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 43);
+            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // Form1
             // 
@@ -167,6 +245,12 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1294, 742);
             this.ControlBox = false;
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtRFC);
+            this.Controls.Add(this.comboPerfiles);
+            this.Controls.Add(this.btnInsertar);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.bLeer);
             this.Controls.Add(this.webView21);
             this.Controls.Add(this.titleBar);
@@ -179,6 +263,7 @@
             this.titleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -192,6 +277,12 @@
         private System.Windows.Forms.Button bBuscar2;
         private System.Windows.Forms.Button bLeer;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnInsertar;
+        private System.Windows.Forms.ComboBox comboPerfiles;
+        private System.Windows.Forms.TextBox txtRFC;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }
 
