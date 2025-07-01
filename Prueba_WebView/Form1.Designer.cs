@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.titleBar = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.bBuscar2 = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
             this.tBuscar = new System.Windows.Forms.TextBox();
@@ -41,17 +42,31 @@
             // 
             // titleBar
             // 
-            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.titleBar.Controls.Add(this.label1);
             this.titleBar.Controls.Add(this.bBuscar2);
             this.titleBar.Controls.Add(this.bBuscar);
             this.titleBar.Controls.Add(this.tBuscar);
             this.titleBar.Controls.Add(this.bCerrar);
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.titleBar.Location = new System.Drawing.Point(0, 0);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(1094, 49);
+            this.titleBar.Size = new System.Drawing.Size(1294, 63);
             this.titleBar.TabIndex = 0;
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("JetBrainsMonoNL NF SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(25, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(250, 22);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Dscarga XML automatizada";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // bBuscar2
             // 
@@ -59,9 +74,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bBuscar2.BackColor = System.Drawing.Color.White;
             this.bBuscar2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar2.Location = new System.Drawing.Point(884, 12);
+            this.bBuscar2.Font = new System.Drawing.Font("JetBrainsMono NFM", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar2.Location = new System.Drawing.Point(1071, 26);
             this.bBuscar2.Name = "bBuscar2";
-            this.bBuscar2.Size = new System.Drawing.Size(72, 24);
+            this.bBuscar2.Size = new System.Drawing.Size(85, 24);
             this.bBuscar2.TabIndex = 3;
             this.bBuscar2.Text = "Apellido";
             this.bBuscar2.UseVisualStyleBackColor = false;
@@ -73,9 +89,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bBuscar.BackColor = System.Drawing.Color.White;
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar.Location = new System.Drawing.Point(806, 12);
+            this.bBuscar.Font = new System.Drawing.Font("JetBrainsMono NFM", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.Location = new System.Drawing.Point(986, 26);
             this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(72, 24);
+            this.bBuscar.Size = new System.Drawing.Size(74, 25);
             this.bBuscar.TabIndex = 2;
             this.bBuscar.Text = "Nombre";
             this.bBuscar.UseVisualStyleBackColor = false;
@@ -86,24 +103,25 @@
             this.tBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tBuscar.Location = new System.Drawing.Point(28, 12);
+            this.tBuscar.Font = new System.Drawing.Font("JetBrainsMono NFM", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBuscar.Location = new System.Drawing.Point(298, 26);
             this.tBuscar.Multiline = true;
             this.tBuscar.Name = "tBuscar";
-            this.tBuscar.Size = new System.Drawing.Size(772, 24);
+            this.tBuscar.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.tBuscar.Size = new System.Drawing.Size(673, 24);
             this.tBuscar.TabIndex = 1;
             this.tBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tBuscar.WordWrap = false;
             // 
             // bCerrar
             // 
-            this.bCerrar.Dock = System.Windows.Forms.DockStyle.Right;
+            this.bCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bCerrar.FlatAppearance.BorderSize = 0;
             this.bCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCerrar.Image = global::Prueba_WebView.Properties.Resources.close;
-            this.bCerrar.Location = new System.Drawing.Point(1051, 0);
+            this.bCerrar.Location = new System.Drawing.Point(1231, 16);
+            this.bCerrar.Margin = new System.Windows.Forms.Padding(0);
             this.bCerrar.Name = "bCerrar";
-            this.bCerrar.Size = new System.Drawing.Size(43, 49);
+            this.bCerrar.Size = new System.Drawing.Size(63, 44);
             this.bCerrar.TabIndex = 0;
             this.bCerrar.UseVisualStyleBackColor = true;
             this.bCerrar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bCerrar_MouseDown);
@@ -119,9 +137,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView21.Location = new System.Drawing.Point(28, 66);
+            this.webView21.Location = new System.Drawing.Point(28, 86);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(928, 551);
+            this.webView21.Size = new System.Drawing.Size(1128, 631);
             this.webView21.Source = new System.Uri("https://portal.facturaelectronica.sat.gob.mx/", System.UriKind.Absolute);
             this.webView21.TabIndex = 1;
             this.webView21.ZoomFactor = 1D;
@@ -133,9 +151,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bLeer.BackColor = System.Drawing.Color.White;
             this.bLeer.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bLeer.Location = new System.Drawing.Point(973, 66);
+            this.bLeer.Font = new System.Drawing.Font("JetBrainsMono NFM", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bLeer.Location = new System.Drawing.Point(1174, 85);
             this.bLeer.Name = "bLeer";
-            this.bLeer.Size = new System.Drawing.Size(106, 76);
+            this.bLeer.Size = new System.Drawing.Size(106, 176);
             this.bLeer.TabIndex = 3;
             this.bLeer.Text = "Leer";
             this.bLeer.UseVisualStyleBackColor = false;
@@ -146,7 +165,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1094, 642);
+            this.ClientSize = new System.Drawing.Size(1294, 742);
             this.ControlBox = false;
             this.Controls.Add(this.bLeer);
             this.Controls.Add(this.webView21);
@@ -170,8 +189,9 @@
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.TextBox tBuscar;
-        private System.Windows.Forms.Button bLeer;
         private System.Windows.Forms.Button bBuscar2;
+        private System.Windows.Forms.Button bLeer;
+        private System.Windows.Forms.Label label1;
     }
 }
 
