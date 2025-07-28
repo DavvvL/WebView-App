@@ -30,8 +30,6 @@
         {
             this.titleBar = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.bBuscar2 = new System.Windows.Forms.Button();
-            this.bBuscar = new System.Windows.Forms.Button();
             this.bCerrar = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.bLeer = new System.Windows.Forms.Button();
@@ -45,7 +43,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.tBuscar = new System.Windows.Forms.TextBox();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -54,9 +51,6 @@
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.titleBar.Controls.Add(this.label1);
-            this.titleBar.Controls.Add(this.bBuscar2);
-            this.titleBar.Controls.Add(this.bBuscar);
-            this.titleBar.Controls.Add(this.tBuscar);
             this.titleBar.Controls.Add(this.bCerrar);
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
@@ -77,36 +71,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Descarga XML automatizada";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // bBuscar2
-            // 
-            this.bBuscar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBuscar2.BackColor = System.Drawing.Color.White;
-            this.bBuscar2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar2.Location = new System.Drawing.Point(1071, 26);
-            this.bBuscar2.Name = "bBuscar2";
-            this.bBuscar2.Size = new System.Drawing.Size(85, 24);
-            this.bBuscar2.TabIndex = 3;
-            this.bBuscar2.Text = "Prueba 2";
-            this.bBuscar2.UseVisualStyleBackColor = false;
-            this.bBuscar2.Click += new System.EventHandler(this.bBuscar2_Click);
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBuscar.BackColor = System.Drawing.Color.White;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.Location = new System.Drawing.Point(986, 26);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(74, 25);
-            this.bBuscar.TabIndex = 2;
-            this.bBuscar.Text = "Prueba 1";
-            this.bBuscar.UseVisualStyleBackColor = false;
-            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
             // 
             // bCerrar
             // 
@@ -273,20 +237,6 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Autorrellenar datos";
             // 
-            // tBuscar
-            // 
-            this.tBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBuscar.Location = new System.Drawing.Point(298, 26);
-            this.tBuscar.Multiline = true;
-            this.tBuscar.Name = "tBuscar";
-            this.tBuscar.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.tBuscar.Size = new System.Drawing.Size(673, 24);
-            this.tBuscar.TabIndex = 1;
-            this.tBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -325,8 +275,6 @@
         private System.Windows.Forms.Panel titleBar;
         private System.Windows.Forms.Button bCerrar;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
-        private System.Windows.Forms.Button bBuscar;
-        private System.Windows.Forms.Button bBuscar2;
         private System.Windows.Forms.Button bLeer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnInsertar;
@@ -339,7 +287,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tBuscar;
     }
 }
 

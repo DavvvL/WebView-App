@@ -157,7 +157,7 @@ namespace Prueba_WebView
             base.WndProc(ref m);
         }
 
-        private async void bBuscar_Click(object sender, EventArgs e)
+        /*private async void bBuscar_Click(object sender, EventArgs e)
         {
             string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
 
@@ -173,7 +173,7 @@ namespace Prueba_WebView
             ";
 
             await webView21.ExecuteScriptAsync(insertarScript);
-        }
+        }*/
 
         private async void bLeer_Click(object sender, EventArgs e)
         {
@@ -193,9 +193,9 @@ namespace Prueba_WebView
             string resultado = await webView21.ExecuteScriptAsync(leerScript);
         }
 
-        private async void bBuscar2_Click(object sender, EventArgs e)
+        /*private async void bBuscar2_Click(object sender, EventArgs e)
         {
-            string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
+            string texto = tBuscar.Text.Replace("'", "\\'"); // Remplaza comillas simples
 
             // Script para insertar el texto en el campo de búsqueda
             string insertarScript2 = $@"
@@ -209,7 +209,7 @@ namespace Prueba_WebView
             ";
 
             await webView21.ExecuteScriptAsync(insertarScript2);
-        }
+        }*/
 
         private void webView21_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
