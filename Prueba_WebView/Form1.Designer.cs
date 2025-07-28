@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.titleBar = new System.Windows.Forms.Panel();
+            this.bMaximizar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.bCerrar = new System.Windows.Forms.Button();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
@@ -36,13 +37,13 @@
             this.comboPerfiles = new System.Windows.Forms.ComboBox();
             this.txtRFC = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnInsertar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnInsertar = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,7 @@
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.titleBar.Controls.Add(this.bMaximizar);
             this.titleBar.Controls.Add(this.label1);
             this.titleBar.Controls.Add(this.bCerrar);
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -59,6 +61,22 @@
             this.titleBar.Size = new System.Drawing.Size(1294, 63);
             this.titleBar.TabIndex = 0;
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
+            // 
+            // bMaximizar
+            // 
+            this.bMaximizar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bMaximizar.FlatAppearance.BorderSize = 0;
+            this.bMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bMaximizar.Image = global::Prueba_WebView.Properties.Resources.Maxi_1_tamaño_prueba4;
+            this.bMaximizar.Location = new System.Drawing.Point(1195, 16);
+            this.bMaximizar.Margin = new System.Windows.Forms.Padding(0);
+            this.bMaximizar.Name = "bMaximizar";
+            this.bMaximizar.Size = new System.Drawing.Size(41, 44);
+            this.bMaximizar.TabIndex = 5;
+            this.bMaximizar.UseVisualStyleBackColor = true;
+            this.bMaximizar.Click += new System.EventHandler(this.bMaximizar_Click);
+            this.bMaximizar.MouseEnter += new System.EventHandler(this.bMaximizar_MouseEnter);
+            this.bMaximizar.MouseLeave += new System.EventHandler(this.bMaximizar_MouseLeave);
             // 
             // label1
             // 
@@ -157,28 +175,6 @@
             this.txtPassword.TabIndex = 9;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Image = global::Prueba_WebView.Properties.Resources.guardar3;
-            this.btnGuardar.Location = new System.Drawing.Point(1170, 127);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(100, 43);
-            this.btnGuardar.TabIndex = 10;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnInsertar
-            // 
-            this.btnInsertar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInsertar.Image = global::Prueba_WebView.Properties.Resources.enter3;
-            this.btnInsertar.Location = new System.Drawing.Point(1051, 127);
-            this.btnInsertar.Name = "btnInsertar";
-            this.btnInsertar.Size = new System.Drawing.Size(100, 43);
-            this.btnInsertar.TabIndex = 6;
-            this.btnInsertar.UseVisualStyleBackColor = true;
-            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -237,6 +233,28 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Autorrellenar datos";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.Image = global::Prueba_WebView.Properties.Resources.guardar3;
+            this.btnGuardar.Location = new System.Drawing.Point(1170, 127);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(100, 43);
+            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnInsertar
+            // 
+            this.btnInsertar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInsertar.Image = global::Prueba_WebView.Properties.Resources.enter3;
+            this.btnInsertar.Location = new System.Drawing.Point(1051, 127);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(100, 43);
+            this.btnInsertar.TabIndex = 6;
+            this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -287,6 +305,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bMaximizar;
     }
 }
 

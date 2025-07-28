@@ -116,6 +116,21 @@
   <ItemGroup>
     <None Include="Resources\guardar3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maxi_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maxi_1 tamaño prueba4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maxi_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maxi_1hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maxi_2hover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3296.44\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3296.44\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

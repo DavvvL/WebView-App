@@ -27,6 +27,10 @@ namespace Prueba_WebView
         private Image original;
         private Image hover;
         private Image press;
+        private Image max_max;
+        private Image max_normal;
+        private Image max_max_hover;
+        private Image max_normal_hover;
 
         string archivoPerfiles = Path.Combine(Application.StartupPath, "perfiles.txt");
         Dictionary<string, string> perfiles = new Dictionary<string, string>();
@@ -42,11 +46,18 @@ namespace Prueba_WebView
             bCerrar.FlatAppearance.MouseDownBackColor = Color.Transparent;
             bCerrar.FlatAppearance.MouseOverBackColor = Color.Transparent;
 
+            bMaximizar.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            bMaximizar.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
 
             original = Properties.Resources.close;
             hover = Properties.Resources.close_hover;
             press = Properties.Resources.close_press;
 
+            max_max = Properties.Resources.Maxi_1_tamaño_prueba4;
+            max_max_hover = Properties.Resources.Maxi_1hover;
+            max_normal = Properties.Resources.Maxi_2;
+            max_normal_hover = Properties.Resources.Maxi_2hover;
         }
 
         [DllImport("user32.dll")]
@@ -320,6 +331,44 @@ namespace Prueba_WebView
             }
 
             e.DrawFocusRectangle();
+        }
+
+        private void bMaximizar_MouseEnter(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                bMaximizar.Image = max_normal_hover;
+            }
+            else
+            {
+                bMaximizar.Image = max_max_hover;
+            }
+        }
+
+        private void bMaximizar_MouseLeave(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                bMaximizar.Image = max_normal;
+            }
+            else
+            {
+                bMaximizar.Image = max_max;
+            }
+        }
+
+        private void bMaximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                bMaximizar.Image = max_normal_hover;
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                bMaximizar.Image = max_max_hover;
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
     }
 }
