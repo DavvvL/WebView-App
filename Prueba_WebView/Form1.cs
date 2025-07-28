@@ -11,19 +11,33 @@ using System.Runtime.InteropServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Threading;
 using Microsoft.Web.WebView2.Core;
+using System.IO;
 
 namespace Prueba_WebView
 {
-    
+
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
+
+        private const int EM_SETCUEBANNER = 0x1501;
+
+
         private Image original;
         private Image hover;
         private Image press;
 
+        string archivoPerfiles = Path.Combine(Application.StartupPath, "perfiles.txt");
+        Dictionary<string, string> perfiles = new Dictionary<string, string>();
+
         public Form1()
         {
             InitializeComponent();
+
+            SendMessage(txtRFC.Handle, EM_SETCUEBANNER, 0, "Inserte RFC...");
+            SendMessage(txtPassword.Handle, EM_SETCUEBANNER, 0, "Inserte contraseña...");
+
 
             bCerrar.FlatAppearance.MouseDownBackColor = Color.Transparent;
             bCerrar.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -32,6 +46,7 @@ namespace Prueba_WebView
             original = Properties.Resources.close;
             hover = Properties.Resources.close_hover;
             press = Properties.Resources.close_press;
+
         }
 
         [DllImport("user32.dll")]
@@ -43,9 +58,28 @@ namespace Prueba_WebView
         private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            comboPerfiles.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboPerfiles.DrawMode = DrawMode.OwnerDrawFixed;
 
+            await webView21.EnsureCoreWebView2Async();
+
+            if (File.Exists(archivoPerfiles))
+            {
+                foreach (var linea in File.ReadAllLines(archivoPerfiles))
+                {
+                    var partes = linea.Split('|');
+                    if (partes.Length == 2)
+                    {
+                        string rfc = partes[0];
+                        string pass = partes[1];
+                        perfiles[rfc] = pass;
+
+                        comboPerfiles.Items.Add(rfc);
+                    }
+                }
+            }
         }
 
         private void titleBar_MouseDown(object sender, MouseEventArgs e)
@@ -123,17 +157,169 @@ namespace Prueba_WebView
             base.WndProc(ref m);
         }
 
-        private void bBuscar_Click(object sender, EventArgs e)
+        private async void bBuscar_Click(object sender, EventArgs e)
         {
-            if (webView21 != null && webView21.CoreWebView2 != null)
+            string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
+
+            // Script para insertar el texto en el campo de búsqueda
+            string insertarScript = $@"
+            (function() {{
+                const iframe = document.getElementById(""iframeResult"");
+                const input = iframe.contentDocument.getElementsByName(""fname"")[0];
+                if (input) {{
+                    input.value = '{texto}';
+                }}
+            }})();
+            ";
+
+            await webView21.ExecuteScriptAsync(insertarScript);
+        }
+
+        private async void bLeer_Click(object sender, EventArgs e)
+        {
+            string leerScript = @"
+                (function() {
+                    const iframe = document.getElementById('iframeResult');
+                    const input1 = iframe.contentDocument.getElementsByName('fname')[0];
+                    const input2 = iframe.contentDocument.getElementsByName('lname')[0];
+                    if (input1.value != '' && input2.value != '') {
+                        alert('Nombre: ' + input1.value + '\nApellido: ' + input2.value);
+                    } else {
+                        alert('Por favor llene el formulario');
+                    }
+                })();
+            ";
+
+            string resultado = await webView21.ExecuteScriptAsync(leerScript);
+        }
+
+        private async void bBuscar2_Click(object sender, EventArgs e)
+        {
+            string texto = tBuscar.Text.Replace("'", "\\'"); // Reemplazarr comillas simples
+
+            // Script para insertar el texto en el campo de búsqueda
+            string insertarScript2 = $@"
+            (function() {{
+                const iframe = document.getElementById(""iframeResult"");
+                const input = iframe.contentDocument.getElementsByName(""lname"")[0];
+                if (input) {{
+                    input.value = '{texto}';
+                }}
+            }})();
+            ";
+
+            await webView21.ExecuteScriptAsync(insertarScript2);
+        }
+
+        private void webView21_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        {
+            if (webView21.Source.ToString().TrimEnd('/') == "https://portal.facturaelectronica.sat.gob.mx/TerminosCondiciones")
             {
-                webView21.CoreWebView2.Navigate(tBuscar.Text);
+                webView21.CoreWebView2.Navigate("https://portalcfdi.facturaelectronica.sat.gob.mx/ConsultaReceptor.aspx");
             }
         }
 
-        private void webView21_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string rfc = txtRFC.Text.Trim();
+            string password = txtPassword.Text;
+
+            if (!string.IsNullOrWhiteSpace(rfc) && !string.IsNullOrWhiteSpace(password))
+            {
+                perfiles[rfc] = password;
+
+                if (!comboPerfiles.Items.Contains(rfc))
+                    comboPerfiles.Items.Add(rfc);
+
+                // Guardar todos los perfiles al archivo
+                File.WriteAllLines(archivoPerfiles, perfiles.Select(p => $"{p.Key}|{p.Value}"));
+
+                MessageBox.Show("Perfil guardado.");
+            }
+            else
+            {
+                MessageBox.Show("RFC y contraseña no pueden estar vacíos.");
+            }
+        }
+
+        private async void btnInsertar_Click(object sender, EventArgs e)
+        {
+            string perfilSeleccionado = comboPerfiles.SelectedItem?.ToString();
+
+            if (perfilSeleccionado != null && perfiles.ContainsKey(perfilSeleccionado))
+            {
+                string rfc = perfilSeleccionado;
+                string password = perfiles[perfilSeleccionado];
+
+                string script = $@"
+        (function() {{
+            const inputRFC = document.getElementsByName('Ecom_User_ID')[0];
+            const inputCONTRA = document.getElementsByName('Ecom_Password')[0];                    
+            if(inputRFC && inputCONTRA) {{
+                inputRFC.value = '{rfc}';
+                inputCONTRA.value = '{password}';
+            }} else {{
+                alert('No se encontraron los campos de RFC o contraseña.');
+            }}
+        }})();
+        ";
+
+                await webView21.ExecuteScriptAsync(script);
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un perfil válido.");
+            }
+        }
+
+        private void comboPerfiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string rfc = comboPerfiles.SelectedItem?.ToString();
+
+            if (rfc != null && perfiles.ContainsKey(rfc))
+            {
+                txtRFC.Text = rfc;
+                txtPassword.Text = perfiles[rfc];
+            }
+        }
+
+        private void comboPerfiles_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox combo = sender as ComboBox;
+            e.DrawBackground();
+
+            string texto = "";
+
+            if (e.Index < 0)
+            {
+                // Si no hay selección, mostramos el placeholder
+                texto = "Sin perfil...";
+                using (Brush brush = new SolidBrush(Color.Gray))
+                {
+                    e.Graphics.DrawString(texto, combo.Font, brush, e.Bounds);
+                }
+            }
+            else
+            {
+                // Ítem normal
+                texto = combo.Items[e.Index].ToString();
+                using (Brush brush = new SolidBrush(combo.ForeColor))
+                {
+                    e.Graphics.DrawString(texto, combo.Font, brush, e.Bounds);
+                }
+            }
+
+            e.DrawFocusRectangle();
         }
     }
 }
