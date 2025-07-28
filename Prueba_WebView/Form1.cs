@@ -15,8 +15,7 @@ using System.IO;
 
 namespace Prueba_WebView
 {
-    //nueva rama
-    
+
     public partial class Form1 : Form
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
