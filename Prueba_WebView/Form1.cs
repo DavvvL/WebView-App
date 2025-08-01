@@ -174,7 +174,7 @@ namespace Prueba_WebView
             base.WndProc(ref m);
         }
 
-        private async void bLeer_Click(object sender, EventArgs e)
+        /*private async void bLeer_Click(object sender, EventArgs e)
         {
             string leerScript = @"
                 (function() {
@@ -190,7 +190,7 @@ namespace Prueba_WebView
             ";
 
             string resultado = await webView21.ExecuteScriptAsync(leerScript);
-        }
+        }*/
 
         private void webView21_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {

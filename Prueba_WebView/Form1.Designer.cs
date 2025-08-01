@@ -50,6 +50,7 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.btnSeleccionarRuta = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -142,7 +143,6 @@
             this.bLeer.TabIndex = 3;
             this.bLeer.Text = "Leer";
             this.bLeer.UseVisualStyleBackColor = false;
-            this.bLeer.Click += new System.EventHandler(this.bLeer_Click);
             // 
             // comboPerfiles
             // 
@@ -269,7 +269,7 @@
             this.txtRutaDescarga.Location = new System.Drawing.Point(1051, 355);
             this.txtRutaDescarga.Name = "txtRutaDescarga";
             this.txtRutaDescarga.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtRutaDescarga.Size = new System.Drawing.Size(219, 22);
+            this.txtRutaDescarga.Size = new System.Drawing.Size(147, 22);
             this.txtRutaDescarga.TabIndex = 16;
             this.txtRutaDescarga.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -282,10 +282,11 @@
             this.btnIniciarDescarga.TabIndex = 17;
             this.btnIniciarDescarga.Text = "Iniciar Descarga";
             this.btnIniciarDescarga.UseVisualStyleBackColor = true;
+            this.btnIniciarDescarga.Click += new System.EventHandler(this.btnIniciarDescarga_Click);
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(1050, 458);
+            this.progressBar.Location = new System.Drawing.Point(1049, 489);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(222, 28);
             this.progressBar.TabIndex = 18;
@@ -294,17 +295,17 @@
             // 
             this.lblEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Font = new System.Drawing.Font("Source Han Sans HW HC", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.White;
-            this.lblEstado.Location = new System.Drawing.Point(1047, 510);
+            this.lblEstado.Location = new System.Drawing.Point(1048, 457);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(67, 20);
+            this.lblEstado.Size = new System.Drawing.Size(121, 19);
             this.lblEstado.TabIndex = 19;
-            this.lblEstado.Text = "Estado";
+            this.lblEstado.Text = "Estado: Inactivo";
             // 
             // dtpFechaInicio
             // 
-            this.dtpFechaInicio.Location = new System.Drawing.Point(1052, 543);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(1052, 574);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(219, 22);
             this.dtpFechaInicio.TabIndex = 20;
@@ -316,6 +317,17 @@
             this.dtpFechaFin.Size = new System.Drawing.Size(219, 22);
             this.dtpFechaFin.TabIndex = 21;
             // 
+            // btnSeleccionarRuta
+            // 
+            this.btnSeleccionarRuta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSeleccionarRuta.Location = new System.Drawing.Point(1204, 355);
+            this.btnSeleccionarRuta.Name = "btnSeleccionarRuta";
+            this.btnSeleccionarRuta.Size = new System.Drawing.Size(60, 22);
+            this.btnSeleccionarRuta.TabIndex = 22;
+            this.btnSeleccionarRuta.Text = "Buscar";
+            this.btnSeleccionarRuta.UseVisualStyleBackColor = true;
+            this.btnSeleccionarRuta.Click += new System.EventHandler(this.btnSeleccionarRuta_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -323,6 +335,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1294, 742);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSeleccionarRuta);
             this.Controls.Add(this.dtpFechaFin);
             this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.lblEstado);
@@ -379,6 +392,7 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
         private System.Windows.Forms.DateTimePicker dtpFechaFin;
+        private System.Windows.Forms.Button btnSeleccionarRuta;
     }
 }
 
