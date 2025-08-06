@@ -564,7 +564,7 @@ namespace Prueba_WebView
                     radioFechas.dispatchEvent(new Event('change', { bubbles: true }));
                     return 'Radio button seleccionado';
                 }
-                return 'Radio button ya estaba seleccionado o no encontrado';
+                return 'Radio button ya estaba seleccionado';
             } catch (e) {
                 return 'Error: ' + e.message;
             }
@@ -572,91 +572,144 @@ namespace Prueba_WebView
         ";
 
                 await webView21.ExecuteScriptAsync(scriptRadio);
-                await Task.Delay(1000, cancellationToken); // Esperar a que se active el formulario
+                await Task.Delay(1500, cancellationToken); // Más tiempo para que se active el formulario
 
-                // Configurar los selectores de fecha
+                // Configurar los selectores de fecha paso a paso
                 string anio = fecha.Year.ToString();
                 string mes = fecha.Month.ToString();
                 string dia = fecha.Day.ToString("00"); // Formato con ceros a la izquierda
 
-                string scriptFecha = $@"
+                // PASO 1: Configurar año
+                string scriptAnio = $@"
         (function() {{
             try {{
-                var resultado = 'Configurando fecha: {fecha.ToString("dd/MM/yyyy")}\n';
-                
-                // PASO 1: Configurar año
-                var selectAnio = document.getElementById('DdlAnio') || 
-                               document.querySelector('select[name*=""DdlAnio""]') ||
-                               document.querySelector('select[id*=""DdlAnio""]');
-                
+                var selectAnio = document.getElementById('DdlAnio');
                 if (selectAnio) {{
                     selectAnio.value = '{anio}';
                     selectAnio.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                    resultado += 'Año configurado: {anio}\n';
+                    selectAnio.dispatchEvent(new Event('blur', {{ bubbles: true }}));
+                    return 'Año configurado: {anio}';
                 }} else {{
-                    resultado += 'ERROR: No se encontró selector de año\n';
+                    return 'ERROR: No se encontró selector de año';
                 }}
-                
-                // PASO 2: Configurar mes (esperar un poco por si hay validaciones)
-                setTimeout(function() {{
-                    var selectMes = document.getElementById('ctl00_MainContent_CldFecha_DdlMes') || 
-                                   document.querySelector('select[name*=""DdlMes""]') ||
-                                   document.querySelector('select[id*=""DdlMes""]');
-                    
-                    if (selectMes) {{
-                        selectMes.value = '{mes}';
-                        selectMes.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                        resultado += 'Mes configurado: {mes}\n';
-                        
-                        // PASO 3: Configurar día (esperar a que se actualice el selector de días)
-                        setTimeout(function() {{
-                            var selectDia = document.getElementById('ctl00_MainContent_CldFecha_DdlDia') || 
-                                           document.querySelector('select[name*=""DdlDia""]') ||
-                                           document.querySelector('select[id*=""DdlDia""]');
-                            
-                            if (selectDia) {{
-                                selectDia.value = '{dia}';
-                                selectDia.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                                resultado += 'Día configurado: {dia}\n';
-                            }} else {{
-                                resultado += 'ERROR: No se encontró selector de día\n';
-                            }}
-                        }}, 500);
-                        
-                    }} else {{
-                        resultado += 'ERROR: No se encontró selector de mes\n';
-                    }}
-                }}, 500);
-                
-                return resultado;
             }} catch (e) {{
-                return 'Error: ' + e.message;
+                return 'Error configurando año: ' + e.message;
             }}
         }})();
         ";
 
-                await webView21.ExecuteScriptAsync(scriptFecha);
+                await webView21.ExecuteScriptAsync(scriptAnio);
+                await Task.Delay(1000, cancellationToken);
 
-                // Esperar más tiempo para que se procesen todos los cambios
-                await Task.Delay(3000, cancellationToken);
+                // PASO 2: Configurar mes
+                string scriptMes = $@"
+        (function() {{
+            try {{
+                var selectMes = document.getElementById('ctl00_MainContent_CldFecha_DdlMes');
+                if (selectMes) {{
+                    selectMes.value = '{mes}';
+                    selectMes.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                    selectMes.dispatchEvent(new Event('blur', {{ bubbles: true }}));
+                    
+                    // Llamar función asignaDia si existe
+                    if (typeof asignaDia === 'function') {{
+                        asignaDia();
+                    }}
+                    
+                    return 'Mes configurado: {mes}';
+                }} else {{
+                    return 'ERROR: No se encontró selector de mes';
+                }}
+            }} catch (e) {{
+                return 'Error configurando mes: ' + e.message;
+            }}
+        }})();
+        ";
 
-                // Verificar que la fecha se configuró correctamente
-                string scriptVerificacion = @"
+                await webView21.ExecuteScriptAsync(scriptMes);
+                await Task.Delay(1500, cancellationToken); // Más tiempo para que se actualicen los días
+
+                // PASO 3: Verificar opciones disponibles de días y configurar
+                string scriptDiaCompleto = $@"
+        (function() {{
+            try {{
+                var selectDia = document.getElementById('ctl00_MainContent_CldFecha_DdlDia');
+                if (selectDia) {{
+                    var resultado = 'Configurando día {dia}:\n';
+                    
+                    // Mostrar opciones disponibles
+                    var opciones = [];
+                    for (var i = 0; i < selectDia.options.length; i++) {{
+                        opciones.push(selectDia.options[i].value + ':' + selectDia.options[i].text);
+                    }}
+                    resultado += 'Opciones disponibles: ' + opciones.join(', ') + '\n';
+                    
+                    // Probar diferentes formatos del día
+                    var formatosDia = ['{dia}', '{fecha.Day}', '{fecha.Day:00}'];
+                    var configurado = false;
+                    
+                    for (var formato of formatosDia) {{
+                        if (!configurado) {{
+                            for (var i = 0; i < selectDia.options.length; i++) {{
+                                if (selectDia.options[i].value === formato) {{
+                                    selectDia.value = formato;
+                                    selectDia.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                                    selectDia.dispatchEvent(new Event('blur', {{ bubbles: true }}));
+                                    resultado += 'Día configurado con formato: ' + formato + '\n';
+                                    configurado = true;
+                                    break;
+                                }}
+                            }}
+                        }}
+                    }}
+                    
+                    if (!configurado) {{
+                        resultado += 'ERROR: No se pudo configurar el día con ningún formato\n';
+                    }}
+                    
+                    resultado += 'Valor final del día: ' + selectDia.value + '\n';
+                    return resultado;
+                }} else {{
+                    return 'ERROR: No se encontró selector de día';
+                }}
+            }} catch (e) {{
+                return 'Error configurando día: ' + e.message;
+            }}
+        }})();
+        ";
+
+                string resultadoDia = await webView21.ExecuteScriptAsync(scriptDiaCompleto);
+                System.Diagnostics.Debug.WriteLine($"Configuración de día: {resultadoDia}");
+
+                // Esperar para que se procesen todos los cambios
+                await Task.Delay(2000, cancellationToken);
+
+                // Verificación final
+                string scriptVerificacionFinal = @"
         (function() {
             try {
                 var anio = document.getElementById('DdlAnio')?.value || 'No encontrado';
                 var mes = document.getElementById('ctl00_MainContent_CldFecha_DdlMes')?.value || 'No encontrado';
                 var dia = document.getElementById('ctl00_MainContent_CldFecha_DdlDia')?.value || 'No encontrado';
                 
-                return 'Verificación - Año: ' + anio + ', Mes: ' + mes + ', Día: ' + dia;
+                return 'VERIFICACIÓN FINAL - Año: ' + anio + ', Mes: ' + mes + ', Día: ' + dia + 
+                       (dia === '0' || dia === '' ? ' ⚠️ DÍA NO CONFIGURADO' : ' ✓ DÍA CONFIGURADO');
             } catch (e) {
                 return 'Error en verificación: ' + e.message;
             }
         })();
         ";
 
-                string verificacion = await webView21.ExecuteScriptAsync(scriptVerificacion);
-                System.Diagnostics.Debug.WriteLine($"Verificación de fecha: {verificacion}");
+                string verificacionFinal = await webView21.ExecuteScriptAsync(scriptVerificacionFinal);
+                System.Diagnostics.Debug.WriteLine($"Verificación final: {verificacionFinal}");
+
+                // Mostrar resultado en la UI
+                if (lblEstado.InvokeRequired)
+                {
+                    lblEstado.Invoke(new Action(() => {
+                        lblEstado.Text = $"Fecha configurada: {fecha.ToString("dd/MM/yyyy")} - {verificacionFinal.Split('-')[1].Trim()}";
+                    }));
+                }
 
             }
             catch (OperationCanceledException)

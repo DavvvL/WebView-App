@@ -51,7 +51,6 @@
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.btnSeleccionarRuta = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.SuspendLayout();
@@ -287,6 +286,7 @@
             // 
             // progressBar
             // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(1049, 489);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(222, 28);
@@ -306,6 +306,7 @@
             // 
             // dtpFechaInicio
             // 
+            this.dtpFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFechaInicio.Location = new System.Drawing.Point(1052, 574);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(219, 22);
@@ -313,6 +314,7 @@
             // 
             // dtpFechaFin
             // 
+            this.dtpFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFechaFin.Location = new System.Drawing.Point(1051, 630);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(219, 22);
@@ -329,16 +331,6 @@
             this.btnSeleccionarRuta.UseVisualStyleBackColor = true;
             this.btnSeleccionarRuta.Click += new System.EventHandler(this.btnSeleccionarRuta_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1099, 684);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "bDiagnosticar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -346,7 +338,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1294, 742);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSeleccionarRuta);
             this.Controls.Add(this.dtpFechaFin);
             this.Controls.Add(this.dtpFechaInicio);
@@ -405,7 +396,6 @@
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
         private System.Windows.Forms.DateTimePicker dtpFechaFin;
         private System.Windows.Forms.Button btnSeleccionarRuta;
-        private System.Windows.Forms.Button button1;
     }
 }
 
